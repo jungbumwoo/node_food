@@ -12,10 +12,10 @@ const VideoSchma = new mongoose.Schema({
     description: String,
     views: {
         type: Number,
-        default: 0 
+        default: 0
     },
-    createdA: {
-        type: Date, 
+    createdAt: {
+        type: Date,
         default: Date.now
     },
     comments: {

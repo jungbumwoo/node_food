@@ -1,11 +1,11 @@
 import express from "express";
 import routes from "../routes";
 import {
-    users,
-    userDetail,
-    editProfile,
-    changePassword
-  } from "../controllers/userController";
+  userDetail,
+  editProfile,
+  changePassword
+  // eslint-disable-next-line import/no-unresolved
+} from "../controllers/userController";
 
 const userRouter = express.Router();
 
