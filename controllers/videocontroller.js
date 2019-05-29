@@ -26,12 +26,12 @@ export const search = async (req, res) => {
   } = req;
   let videos = [];
   try {
-    videos = await Video.fing({
+    videos = await Video.find({
       title: {
         $regex: searchingBy,
         $options: "i"
       }
-    })
+    });
   } catch (error) {
     console.log(error);
   }
