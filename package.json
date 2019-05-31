@@ -10,6 +10,7 @@
     "autoprefixer": "^9.5.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
@@ -35,7 +36,10 @@
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --delay 2",
     "dev:assets": "WEBPACK_ENV=development webpack",
-    "build:assets": "WEBPACK_ENV=production webpack"
+    "build:assets": "WEBPACK_ENV=production webpack",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
+    "parentScript": "cross-env GREET=\"Joe\" npm run childScript",
+    "childScript": "cross-env-shell \"echo Hello $GREET\""
   },
   "author": "Jungbum woo",
   "license": "ISC"
