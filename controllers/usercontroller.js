@@ -1,6 +1,10 @@
 import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
+import GH_ID from "../.env";
+import {
+  access
+} from "fs";
 
 export const getJoin = (req, res) => {
   res.render("join", {
@@ -51,7 +55,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
   const {
     _json: {
       id,
-      avatar_url,
+      avatar_url: avatarUrl,
       name,
       email
     }
@@ -62,6 +66,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     });
     if (user) {
       user.githubId = id;
+      user.avatarUrl = avatarUrl;
       user.save();
       return cb(null, user);
     }
@@ -69,7 +74,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
       email,
       name,
       githubId: id,
-      avatarUrl: avatar_url
+      avatarUrl
     });
     return cb(null, newUser);
   } catch (error) {
@@ -79,16 +84,50 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
 
 export const postGithubLogIn = (req, res) => {
   res.redirect(routes.home);
-}
+};
+
+export const facebookLogin = passport.authenticate("facebook");
+
+export const facebookLoginCallback = (
+  accessToken,
+  refreshToken,
+  profile,
+  cb
+) => {
+  console.log(accessToken, refreshToken, profile, cb);
+};
+
+export const postFacebookLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
 
 export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
 };
-export const userDetail = (req, res) =>
+
+export const getMe = (req, res) =>
   res.render("userDetail", {
-    pageTitle: "User Detail"
+    pageTitle: "User Detail",
+    user: req.user
   });
+export const userDetail = async (req, res) => {
+  const {
+    params: {
+      id
+    }
+  } = req;
+  try {
+    const user = await User.findById(id);
+    res.render("userDetail", {
+      pageTitle: "User Detail",
+      user
+    });
+  } catch (error) {
+    res.redirect(routes.home);
+  };
+};
 export const editProfile = (req, res) =>
   res.render("editProfile", {
     pageTitle: "Edit Profile"
