@@ -1,17 +1,11 @@
 import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
-import GH_ID from "../.env";
-import {
-  access
-} from "fs";
-
 export const getJoin = (req, res) => {
   res.render("join", {
     pageTitle: "Join"
   });
 };
-
 export const postJoin = async (req, res, next) => {
   const {
     body: {
@@ -48,9 +42,7 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   successRedirect: routes.home
 });
-
 export const githubLogin = passport.authenticate("github");
-
 export const githubLoginCallback = async (_, __, profile, cb) => {
   const {
     _json: {
@@ -66,7 +58,6 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     });
     if (user) {
       user.githubId = id;
-      user.avatarUrl = avatarUrl;
       user.save();
       return cb(null, user);
     }
@@ -81,7 +72,6 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     return cb(error);
   }
 };
-
 export const postGithubLogIn = (req, res) => {
   res.redirect(routes.home);
 };
@@ -101,17 +91,17 @@ export const postFacebookLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
-
 export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
 };
-
-export const getMe = (req, res) =>
+export const getMe = (req, res) => {
   res.render("userDetail", {
     pageTitle: "User Detail",
     user: req.user
   });
+};
+
 export const userDetail = async (req, res) => {
   const {
     params: {
@@ -126,7 +116,7 @@ export const userDetail = async (req, res) => {
     });
   } catch (error) {
     res.redirect(routes.home);
-  };
+  }
 };
 export const editProfile = (req, res) =>
   res.render("editProfile", {

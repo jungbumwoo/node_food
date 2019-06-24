@@ -55,4 +55,5 @@ globalRouter.get(
   }),
   postFacebookLogin
 );
+
 export default globalRouter;

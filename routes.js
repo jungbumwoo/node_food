@@ -26,11 +26,10 @@ const DELETE_VIDEO = "/:id/delete";
 const GITHUB = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
-// FaceBook
+// Facebook
 
-const FB = "auth/facebook";
-const FB_CALLBACK = "auth/facebook/callback";
-
+const FB = "/auth/facebook";
+const FB_CALLBACK = "/auth/facebook/callback";
 
 
 const routes = {
