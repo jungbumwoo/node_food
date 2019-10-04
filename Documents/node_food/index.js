@@ -1,6 +1,6 @@
 import express from 'express';
 import routes from './route';
-import { middlewareRoutes } from './middlewares';
+import { middlewareRoutes, middlewareReady } from './middlewares';
 import { foodRouter } from './router/foodRouter';
 import { globalRouter } from './router/globalRouter';
 
