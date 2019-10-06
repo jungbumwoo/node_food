@@ -1,0 +1,7 @@
+extends layouts/main
+
+block content
+    p file Upload
+    form(action='uploadFood' method='post' enctype="multipart/form-data")
+      input(type='file' name='userfile')
+      input(type='submit')

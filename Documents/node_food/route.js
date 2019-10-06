@@ -2,15 +2,18 @@ const HOME = '/';
 const USER = '/user';
 
 const FOOD = '/food';
-const UPLOAD = '/upload';
+const FILEUPLOAD = '/fileupload';
 const LIST = '/list';
+const UPLOADFOOD = '/uploadfood';
 
 const routes = {
 	home: HOME,
 	user: USER,
 
 	food: FOOD,
-	upload: UPLOAD,
-	list: LIST
+	fileUpload: FILEUPLOAD,
+	list: LIST,
+
+	uploadFood: UPLOADFOOD
 };
 export default routes;
