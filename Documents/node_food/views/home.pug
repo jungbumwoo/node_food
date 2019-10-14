@@ -3,6 +3,10 @@ extends layouts/main
 block content
   p hi I'm home. made by pug template
 
+  .join
+    a(href=`${routes.join}`)
+      p Join
+
   .uploadFood
     a(href=`${routes.food}/fileupload`)
       p upload

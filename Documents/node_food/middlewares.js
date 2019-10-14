@@ -12,4 +12,4 @@ export const middlewareReady = (req, res, next) => {
 	next();
 };
 
-export const foodUpload = multerFood.single('userfile');
+export const foodUpload = multerFood.single('foodfile');

@@ -1,4 +1,15 @@
 extends layouts/main
 
 block content
+    
     p hi I'm food. made by pug template
+    
+    .foods
+        each item in foods
+            h1 = item.fileUrl
+            h2 = item.title
+            h3 = item.description
+            h4 = item.view
+            h4 = item.createdAt
+            h4 = item.store
+            h4 = comments
