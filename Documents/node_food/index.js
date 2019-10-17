@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import './model/Food';
 import './model/Comment';
+import './model/User';
 
 const app = express();
 

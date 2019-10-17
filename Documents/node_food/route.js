@@ -1,6 +1,7 @@
 const HOME = '/';
 const USER = '/user';
 const USER_DETAIL = '/userdetail';
+const LOGIN = '/login';
 
 const JOIN = '/join';
 
@@ -8,7 +9,7 @@ const FOOD = '/food';
 const FILEUPLOAD = '/fileupload';
 const LIST = '/list';
 const UPLOADFOOD = '/uploadfood';
-const FOODDETAIL = '/fooddetail';
+const FOODDETAIL = '/:id';
 
 const routes = {
 	home: HOME,
@@ -20,7 +21,7 @@ const routes = {
 			return USER_DETAIL;
 		}
 	},
-
+	login: LOGIN,
 	join: JOIN,
 
 	food: FOOD,

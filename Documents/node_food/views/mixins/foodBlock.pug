@@ -1,0 +1,6 @@
+mixin foodBlock(food = {})
+    .foodBlock
+        a(href=routes.foodDetail(food.id))
+            img.foodBlock__thumbnail(src=food.fileUrl, controls=true)
+            h4.foodBlock__title=food.title
+            h6.foodBlock__views=food.views
